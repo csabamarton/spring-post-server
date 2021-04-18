@@ -1,6 +1,7 @@
 package com.csmarton.postserver.dao;
 
 import com.csmarton.postserver.model.Post;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -39,5 +40,10 @@ public class PostRepositoryTest {
             repository.save(new Post("1", "Post1", "Content1"));
             repository.save(new Post("1", "Post1", "Content1"));
         });
+    }
+
+    @AfterEach
+    public void tearDown() throws Exception {
+        this.repository.deleteAll();
     }
 }
